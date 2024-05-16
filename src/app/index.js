@@ -19,7 +19,7 @@ app.use(
 app.use(express.json());
 app.use(cookieParser());
 app.use(express.urlencoded({extended:false}));
-// app.use('/images' ,express.static('./../public'));
+app.use('/images', express.static('./../public'));
 
 // routes --->
 app.use('/api/v1', authRoutesV1)

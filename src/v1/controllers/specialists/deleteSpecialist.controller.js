@@ -1,5 +1,6 @@
 const CustomError = require('../../../utils/Error');
 const Specialist = require('./../../models/specialist.model');
+const Doctor = require('./../../models/doctor.model');
 const connect = require("../../../config/db.config");
 const deleteSpecialist = async (req, res) => {
     try {
@@ -9,8 +10,13 @@ const deleteSpecialist = async (req, res) => {
         if (!id || !specialist ) {
             return res.status(404).json(CustomError.notFoundError({ message: "Not found ! Specialist can not exist"}));
         }
-
-        await Specialist.deleteOne({_id:id})
+        const doctor = await Doctor.find({ specialist: id })
+        if(!doctor){
+            await Specialist.deleteOne({_id:id})
+        }else{
+            return res.status(409).json(CustomError.conflictError({ message: "Specialist can not deleted because some doctor have specilist"}));
+        }
+        
  
         return res.status(200).json({
             message: "Deleted this specialist",

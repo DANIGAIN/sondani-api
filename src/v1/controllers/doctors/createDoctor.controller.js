@@ -14,7 +14,6 @@ const createDoctor = async (req, res) => {
             email,
             image: req.file.filename
         }
-
         const doctor = await Doctor.create(data);
         data._id = doctor._id;
         data.createdAt = doctor.createdAt;
