@@ -5,6 +5,7 @@ const CustomError = require('../../../utils/Error');
 const deleteAppointment = async (req, res) => {
     const { id } = req.params;
     try {
+        await connect()
         const app = await Appointment.findById(id);
         if (!id || !app) {
             return res.status(404).json(CustomError.notFoundError({ message: "Not found ! Appointment can not exist" }));

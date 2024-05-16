@@ -5,6 +5,7 @@ const CustomError = require('../../../utils/Error');
 const getCountAppointmentByStatus = async (req, res) => {
     const { status } = req.params;
     try {
+        await connect()
         const data = await Appointment.find({ status }).count();
         return res.status(201).json({
             message: "count Appointment",
