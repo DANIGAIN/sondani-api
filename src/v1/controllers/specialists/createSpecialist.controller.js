@@ -1,7 +1,7 @@
 const CustomError = require('../../../utils/Error');
 const Specialist = require('./../../models/specialist.model');
 const connect = require("../../../config/db.config");
-const addSpecialist = async (req, res) => {
+const createSpecialist = async (req, res) => {
     try {
         await connect();
         const { category } = req.body;
@@ -20,4 +20,4 @@ const addSpecialist = async (req, res) => {
     }
 
 };
-module.exports = addSpecialist;
+module.exports = createSpecialist;
