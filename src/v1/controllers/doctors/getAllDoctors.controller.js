@@ -4,7 +4,13 @@ const connect = require("../../../config/db.config");
 const getAllDoctors = async(req, res) => {
     try {
         await connect();
-        const doctors = await Doctor.find().populate({ path: 'specialist', select: '_id category' });
+        const doctors = await Doctor.find()
+            .sort({
+                'createdAt': -1
+            })
+            .populate({ path: 'specialist', select: '_id category' })
+            .populate({ path: 'doctorinfo' })
+            .select('-__v')
         const data = [];
         doctors.map((value, key) => {
             const obj = {
