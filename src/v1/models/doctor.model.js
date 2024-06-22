@@ -13,10 +13,10 @@ const doctorSchema = new mongoose.Schema({
         type: mongoose.Types.ObjectId,
         ref: 'Specialist',
     }],
-    doctorinfo: [{
+    doctorinfo: {
         type: mongoose.Types.ObjectId,
         ref: 'Doctor_info',
-    }],
+    },
     rating: {
         type: String,
         required: [true, "reting fild is require"]

@@ -1,7 +1,7 @@
 const connect = require("../../../config/db.config");
 const Appointment = require('./../../models/appointment.model');
 const CustomError = require('../../../utils/Error');
-const createAppointment = async (req, res) => {
+const createAppointment = async(req, res) => {
     const { patientId, name, age, address, email, phone, doctor, tropic, app_Time, status } = req.body;
     try {
         await connect();

@@ -3,10 +3,11 @@ const createService = require('./../controllers/services/createService.controlle
 const deleteService = require('./../controllers/services/deleteService.controller')
 const getAllServices = require('./../controllers/services/getAllServices.controller')
 const { adminMiddleware } = require('./../../middlewares/auth.middleware');
+const upload = require('./../services/upload.service');
 
 const router = express.Router();
 
-router.post('/services', adminMiddleware, createService);
+router.post('/services', adminMiddleware, upload.single('image'), createService);
 router.get('/services', getAllServices);
 router.delete('/services/:id', adminMiddleware, deleteService);
 

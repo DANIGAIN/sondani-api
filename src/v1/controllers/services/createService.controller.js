@@ -1,11 +1,11 @@
 const CustomError = require('../../../utils/Error');
 const Service = require('./../../models/service.model');
 const connect = require("../../../config/db.config");
-const createService = async (req, res) => {
+const createService = async(req, res) => {
     try {
         await connect();
-        const service = req.body;
-        const data =  await  Service.create(service);
+        req.body.image = `${process.env.APP_DOMAIN}/images/` + req.file.filename;
+        const data = await Service.create(req.body);
         return res.status(201).json({
             message: "Created new Services",
             data,

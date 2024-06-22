@@ -1,3 +1,5 @@
+const getDoctor = require('../controllers/doctors/getDoctor.controller');
+
 const express = require('express');
 const upload = require('./../services/upload.service');
 const createDoctor = require('../controllers/doctors/createDoctor.controller');
@@ -11,6 +13,7 @@ const router = express.Router();
 router.post('/doctors', adminMiddleware, upload.single('image'), createDoctor);
 router.get('/doctors', getAllDoctors);
 router.get('/doctors/:sp', getAllDoctorsBySpecialist);
+router.get('/doctors/1/:id', getDoctor);
 router.delete('/doctors/:id', adminMiddleware, deleteDoctor);
 
 module.exports = router;

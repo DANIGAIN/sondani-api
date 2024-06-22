@@ -14,7 +14,7 @@ const createDoctor = async(req, res) => {
 
 
         const data1 = {
-            Doctor_info: info._id,
+            doctorinfo: info._id,
             name,
             specialist: specialist.split(","),
             rating,

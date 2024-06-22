@@ -8,8 +8,8 @@ const getAllDoctors = async(req, res) => {
             .sort({
                 'createdAt': -1
             })
-            .populate({ path: 'specialist', select: '_id category' })
-            .populate({ path: 'doctorinfo' })
+            .populate('specialist')
+            .populate('doctorinfo')
             .select('-__v')
         const data = [];
         doctors.map((value, key) => {

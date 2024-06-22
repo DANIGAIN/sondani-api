@@ -12,14 +12,16 @@ const serviceSchema = new mongoose.Schema({
         minlength: [10, 'Number is incorrect ...'],
         maxlength: [15, 'Number is incorrect ...']
     },
-    group: {
+    message: {
         type: String,
-        required: [true, "Group field is required"]
     },
     info: String,
     price: {
         type: String,
         required: [true, "Price field is required"]
+    },
+    image: {
+        type: String,
     }
 }, {
     timestamps: true
