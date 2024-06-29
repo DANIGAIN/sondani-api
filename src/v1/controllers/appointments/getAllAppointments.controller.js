@@ -2,7 +2,7 @@ const connect = require("../../../config/db.config");
 const Appointment = require('./../../models/appointment.model');
 const CustomError = require('../../../utils/Error');
 
-const getAllAppointments = async () => {
+const getAllAppointments = async(req, res) => {
     try {
         await connect();
         const data = await Appointment.find().populate(['doctor', 'specialist'])

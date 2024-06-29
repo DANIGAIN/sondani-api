@@ -2,7 +2,7 @@ const connect = require("../../../config/db.config");
 const Appointment = require('./../../models/appointment.model');
 const CustomError = require('../../../utils/Error');
 
-const deleteAppointment = async (req, res) => {
+const deleteAppointment = async(req, res) => {
     const { id } = req.params;
     try {
         await connect()

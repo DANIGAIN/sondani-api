@@ -8,42 +8,40 @@ const appointmentSchema = new mongoose.Schema({
         type: String,
         required: [true, "Name field is required"],
     },
-    age: {
-        type:Number
-    },
-    address: {
-        type:String
-    },
     email: {
         type: String
     },
     phone: {
         type: String,
         required: [true, "Phone Number is required"],
-        minlength: [10, 'Number is incorrect ...'],
-        maxlength: [15, 'Number is incorrect ...']
+
     },
     doctor: {
         type: mongoose.Types.ObjectId,
         ref: 'Doctor',
         required: [true, "Doctor field is Required"],
     },
-    specialist:{
+    specialist: {
         type: mongoose.Types.ObjectId,
         ref: 'Specialist',
         required: [true, "Specialist field is Required"],
     },
-    app_Time: {
-        type: Date,
-        required: [true, "Appointment time field is Required"],
-        unique:[true,"This time doctor will be  busy"]
+    time: {
+        type: String,
+
     },
-    status:{
-        type: Number
-    }
-},{
+    date: {
+        type: String,
+
+    },
+    message: {
+        type: String,
+
+    },
+
+}, {
     timestamps: true
 });
 
-const Appointment = mongoose.model.Appointment ||  mongoose.model('Appointment' , appointmentSchema);
-module.exports =  Appointment ;
+const Appointment = mongoose.model.Appointment || mongoose.model('Appointment', appointmentSchema);
+module.exports = Appointment;
